@@ -4,7 +4,7 @@ class Anexo {
     constructor(){
         this.collection = 'Anexos';
     }
-    async getAll(limit = 10, lastDoc = null){
+    async getAll(limit = 10000, lastDoc = null){
         let query =  db.collection(this.collection).limit(limit);
         if(lastDoc){
             query = query.startAfter(lastDoc);
@@ -50,7 +50,7 @@ class Anexo {
         }
     }
     async update(id,newdata){
-        console.log(id);
+        console.log('[ID]',id);
         try{
             await db.collection(this.collection).doc(id).update(newdata);
             return{
